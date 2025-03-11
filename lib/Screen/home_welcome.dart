@@ -11,64 +11,15 @@ class WelcomeScreen extends StatefulWidget {
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
-
 class _WelcomeScreenState extends State<WelcomeScreen> {
   final PageController _pageController = PageController();
-  String _selectedLanguage = "Tiếng Việt";
-
-  void _changeLanguage(String language) {
-    setState(() {
-      _selectedLanguage = language;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
           const SizedBox(height: 40),
-
-          // Nút đổi ngôn ngữ với viền bo tròn
-          // Align(
-          //   alignment: Alignment.topRight,
-          //   child: Padding(
-          //     padding: const EdgeInsets.only(right: 16),
-          //     child: Container(
-          //       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          //       decoration: BoxDecoration(
-          //         color: Colors.white,
-          //         borderRadius: BorderRadius.circular(20),
-          //         border: Border.all(color: Colors.grey.shade300), // Viền nhẹ
-          //         boxShadow: [
-          //           BoxShadow(
-          //             color: Colors.grey,
-          //             blurRadius: 4,
-          //             offset: Offset(0, 2),
-          //           ),
-          //         ],
-          //       ),
-          //       child: PopupMenuButton<String>(
-          //         onSelected: _changeLanguage,
-          //         itemBuilder: (context) => [
-          //           const PopupMenuItem(value: "Tiếng Việt", child: Text("Tiếng Việt")),
-          //           const PopupMenuItem(value: "English", child: Text("English")),
-          //         ],
-          //         child: Row(
-          //           mainAxisSize: MainAxisSize.min,
-          //           children: [
-          //             Text(_selectedLanguage, style: const TextStyle(color: Colors.black)),
-          //             const Icon(Icons.arrow_drop_down, color: Colors.black),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
-
           const SizedBox(height: 20),
-
-          // Logo Zalo căn giữa
           Center(
             child: Text(
               "Zalo",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zalo_clone/Account/login.dart';
+import 'package:zalo_clone/Account/signup.dart';
 
 class PhoneNumberScreen extends StatefulWidget {
   @override
@@ -44,7 +45,9 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                     value: '+84',
                     items: [DropdownMenuItem(value: '+84', child: Text('+84'))],
                     ///
-                    onChanged: (value) {},
+                    onChanged: (value) {
+
+                    },
                   ),
                 ),
                 border: OutlineInputBorder(),
@@ -92,7 +95,9 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
             SizedBox(height: 10),
             ElevatedButton(
               onPressed: (isChecked1 && isChecked2 && phoneController.text.isNotEmpty)
-                  ? () {}
+                  ? () {
+                Navigator.push(context, MaterialPageRoute(builder: (_)=>SignupScreen()));
+              }
                   : null,
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,

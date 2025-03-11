@@ -1,63 +1,54 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 class AuthService {
-  // Firebase Authentication instance
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  // Firestore instance
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-  // Function to handle user signup
   Future<String?> signup({
     required String email,
     required String password,
   }) async {
     try {
-      // Create user in Firebase Authentication with email and password
       UserCredential userCredential =
       await _auth.createUserWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
       );
-
-      // Save additional user data (name, role) in Firestore
       await _firestore.collection('users').doc(userCredential.user!.uid).set({
         'email': email.trim(),
       });
 
-      return null; // Success: no error message
+      return null;
     } catch (e) {
-      return e.toString(); // Error: return the exception message
+      return e.toString();
     }
   }
-
-  // Function to handle user login
   Future<String?> login({
     required String email,
     required String password,
   }) async {
     try {
-      // Sign in the user using Firebase Authentication
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
       );
-
-      // Fetch the user's role from Firestore to determine access level
       DocumentSnapshot userDoc = await _firestore
           .collection('users')
           .doc(userCredential.user!.uid)
           .get();
-
-      return userDoc['role']; // Return the user's role (Admin/User)
+      return userDoc['role'];
     } catch (e) {
-      return e.toString(); // Error: return the exception message
+      return e.toString();
     }
   }
-
-  // for user log out
   signOut() async {
     _auth.signOut();
+  }
+  Future<void> resetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      throw Exception("Lỗi khi gửi yêu cầu đặt lại mật khẩu: $e");
+    }
   }
 }

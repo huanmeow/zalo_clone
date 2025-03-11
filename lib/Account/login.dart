@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Screen/home_main.dart';
 import 'auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,7 +16,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _login() async {
     setState(() {
-      _isLoading = true; // Show spinner
+      _isLoading = true;
+      Navigator.push(context, MaterialPageRoute(builder: (_)=>HomeMain()));
     });
     String? result = await _authService.login(
       email: _emailController.text,
@@ -24,6 +26,25 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _isLoading = false;
     });
+  }
+
+  void _resetPassword() async {
+    if (_emailController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Vui lòng nhập số điện thoại để lấy lại mật khẩu")),
+      );
+      return;
+    }
+    setState(() {
+      _isLoading = true;
+    });
+    await _authService.resetPassword(_emailController.text);
+    setState(() {
+      _isLoading = false;
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Liên kết đặt lại mật khẩu đã được gửi")),
+    );
   }
 
   @override
@@ -88,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Align(
               alignment: Alignment.centerLeft,
               child: TextButton(
-                onPressed: () {},
+                onPressed: _resetPassword,
                 child: Text("Lấy lại mật khẩu", style: TextStyle(color: Colors.blue)),
               ),
             ),

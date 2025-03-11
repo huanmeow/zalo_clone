@@ -1,9 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'Screen/home_welcome.dart';
-void main() {
-  runApp(const MyApp());
-}
 
+import 'Account/email.dart';
+import 'Screen/home_welcome.dart';
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+
+  runApp(
+
+      MyApp());
+}
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

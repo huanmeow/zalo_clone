@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'slider.dart';
+import 'package:zalo_clone/Screen/slider_images.dart';
+import '../Account/login.dart';
+import '../Account/resign_screen.dart';
+
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -123,7 +126,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Column(
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                            builder: (_)=>LoginScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,
@@ -133,7 +140,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                            builder: (_)=>PhoneNumberScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey[300],
                     foregroundColor: Colors.black87,
@@ -141,6 +152,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                   child: const Text("Tạo tài khoản mới"),
                 ),
+
               ],
             ),
           ),

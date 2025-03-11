@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "946064065003",
-    "project_id": "zalo-clone2",
-    "storage_bucket": "zalo-clone2.firebasestorage.app"
+    "project_number": "577787322778",
+    "project_id": "huanmai-c1dd7",
+    "storage_bucket": "huanmai-c1dd7.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:946064065003:android:046aa04cc03df1a6c7d9ae",
+        "mobilesdk_app_id": "1:577787322778:android:90063c99dcd0cf76789a23",
         "android_client_info": {
           "package_name": "com.example.zalo_clone"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDmKGipcysBQF0GhbAUu78jc75IWdKvHo8"
+          "current_key": "AIzaSyDAk1eZsISdI_l8sJ9NlbEsYsfesyL4BN8"
         }
       ],
       "services": {
